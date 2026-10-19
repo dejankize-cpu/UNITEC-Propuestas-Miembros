@@ -1,0 +1,37 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "members": {
+      ".read": true,
+      "$memberId": {
+        ".write": "auth != null && (root.child('userRoles').child(auth.uid).child('role').val() === 'admin' || (((root.child('userRoles').child(auth.uid).child('role').val() === 'presidente' || root.child('userRoles').child(auth.uid).child('role').val() === 'vicepresidente') && root.child('userRoles').child(auth.uid).child('faculty').val() === (newData.exists() ? newData.child('facultad').val() : data.child('facultad').val())) && ((!data.exists() && newData.exists() && !newData.child('cargoPrivilegiado').exists()) || (data.exists() && !data.child('cargoPrivilegiado').exists() && (!newData.exists() || !newData.child('cargoPrivilegiado').exists())) || (root.child('userRoles').child(auth.uid).child('role').val() === 'presidente' && !newData.exists() && data.child('cargoPrivilegiado').val() === ('vicepresidente-' + root.child('userRoles').child(auth.uid).child('facultyKey').val()) && auth.token.auth_time > now / 1000 - 300))))",
+        ".validate": "!newData.exists() || (newData.hasChildren(['nombre', 'facultad', 'cargo']) && newData.child('nombre').isString() && newData.child('facultad').isString() && newData.child('cargo').isString())"
+      }
+    },
+    "proposals": {
+      ".read": true,
+      "$proposalId": {
+        ".write": "auth != null && (root.child('userRoles').child(auth.uid).child('role').val() === 'admin' || ((root.child('userRoles').child(auth.uid).child('role').val() === 'presidente' || root.child('userRoles').child(auth.uid).child('role').val() === 'vicepresidente') && root.child('userRoles').child(auth.uid).child('faculty').val() === (newData.exists() ? newData.child('facultad').val() : data.child('facultad').val())))",
+        ".validate": "!newData.exists() || (newData.hasChildren(['facultad', 'title', 'content']) && newData.child('facultad').isString() && newData.child('title').isString() && newData.child('content').isString())"
+      }
+    },
+    "memberContacts": {
+      ".read": "auth != null && root.child('userRoles').child(auth.uid).child('role').val() === 'admin'",
+      "$facultyKey": {
+        ".read": "auth != null && (root.child('userRoles').child(auth.uid).child('role').val() === 'admin' || root.child('userRoles').child(auth.uid).child('facultyKey').val() === $facultyKey)",
+        "$memberId": {
+          ".write": "auth != null && (root.child('userRoles').child(auth.uid).child('role').val() === 'admin' || (((root.child('userRoles').child(auth.uid).child('role').val() === 'presidente' || root.child('userRoles').child(auth.uid).child('role').val() === 'vicepresidente')) && root.child('userRoles').child(auth.uid).child('facultyKey').val() === $facultyKey))",
+          ".validate": "!newData.exists() || newData.hasChildren(['correo', 'facultad'])"
+        }
+      }
+    },
+    "userRoles": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('userRoles').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && (root.child('userRoles').child(auth.uid).child('role').val() === 'admin' || (!newData.exists() && root.child('userRoles').child(auth.uid).child('role').val() === 'presidente' && data.child('roleKey').val() === ('vicepresidente-' + root.child('userRoles').child(auth.uid).child('facultyKey').val()) && auth.token.auth_time > now / 1000 - 300))"
+      },
+      ".read": "auth != null && root.child('userRoles').child(auth.uid).child('role').val() === 'admin'"
+    }
+  }
+}

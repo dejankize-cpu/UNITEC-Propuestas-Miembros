@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicina | Propuestas y miembros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+	--green:#176b4b; --green-dark:#104a37; --green-soft:#eaf4ed;
+	--ink:#17352b; --paper:#f4f8f5; --white:#fff; --line:#dce8df;
+	--muted:#5a7164; --red:#b52b3a;
+	--display:"Outfit",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--body)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid #a77b19;outline-offset:3px}
+.wrap{width:min(100% - 2rem,68rem);margin-inline:auto}
+.top{background:var(--green-dark);color:var(--white);border-bottom:4px solid #a7cdb3}
+.top .wrap{min-height:5rem;display:flex;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:.85rem;font:600 1rem var(--display)}
+.brand img{width:3.25rem;height:3.25rem;object-fit:cover;border-radius:.25rem;background:#06439b}
+.home{margin-left:auto;color:#e0eee4;font-weight:600}
+.main{padding:clamp(2.5rem,7vh,5rem) 0 4rem}
+.heading{padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--green);font:600 .8rem var(--display);text-transform:uppercase;letter-spacing:.08em}
+h1{margin-top:.35rem;color:var(--green-dark);font:700 clamp(2rem,5vw,3rem)/1.05 var(--display)}
+.heading p:last-child{margin-top:.7rem;color:var(--muted);max-width:42rem}
+.tabs{display:inline-grid;grid-template-columns:1fr 1fr;gap:.25rem;margin-top:1.5rem;padding:.25rem;border:1px solid var(--line);border-radius:.4rem;background:#e8f0ea}
+.tab{min-height:2.75rem;padding:0 1.1rem;border:0;border-radius:.25rem;background:transparent;color:var(--muted);font:600 .95rem var(--display);cursor:pointer}
+.tab[aria-selected=true]{background:var(--green);color:var(--white)}
+.tab-panel{margin-top:1.5rem}
+.tab-panel[hidden]{display:none}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-bottom:.75rem;border-bottom:2px solid var(--green)}
+h2{color:var(--green-dark);font:600 1.5rem/1.2 var(--display)}
+.count{color:var(--muted);font-size:.9rem}
+.items{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+.proposal,.member{min-width:0;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:.35rem;background:var(--white)}
+.proposal-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.proposal h3,.member h3{color:var(--green-dark);font:600 1.1rem/1.3 var(--display);overflow-wrap:anywhere}
+.meta{flex:none;color:var(--muted);font-size:.85rem}
+.proposal-content{margin-top:.75rem;overflow-wrap:anywhere;word-break:break-word}
+.proposal-content p{margin:.5rem 0}
+.proposal-content ul,.proposal-content ol{padding-left:1.4rem;margin:.5rem 0}
+.proposal-content blockquote{margin:.75rem 0;padding:.25rem .8rem;border-left:3px solid #a7cdb3;color:var(--muted)}
+.proposal-content img{display:block;max-width:100%;max-height:70vh;width:auto;height:auto;object-fit:contain;margin:1rem auto}
+.members{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:1rem}
+.member{display:flex;align-items:center;gap:1rem}
+.avatar{width:4rem;height:4rem;flex:none;border-radius:50%;object-fit:cover;background:var(--green-soft)}
+.avatar-fallback{display:grid;place-items:center;color:var(--green-dark);font:600 1rem var(--display)}
+.member-info{min-width:0}
+.member-info p{color:var(--muted);font-size:.9rem;overflow-wrap:anywhere}
+.empty{margin-top:1rem;padding:1.25rem 0;color:var(--muted)}
+footer{margin-top:3rem;padding:1.5rem 0;background:var(--green-dark);color:#dce8df}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.9rem}
+@media(min-width:42rem){.member{padding:1.1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+	<div class="wrap">
+		<a class="brand" href="index.html" aria-label="UNITEC, inicio">
+			<img src="Imagen%20del%20logo%20de%20la%20facultad%20de%20medicina.jpeg" alt="">
+			<span>Facultad de Medicina</span>
+		</a>
+		<a class="home" href="index.html">Inicio</a>
+	</div>
+</header>
+<main class="main wrap">
+	<section class="heading" aria-labelledby="pageTitle">
+		<p class="eyebrow">Comunidad académica</p>
+		<h1 id="pageTitle">Propuestas y miembros</h1>
+		<p>Conoce las propuestas y a las personas de la Facultad de Medicina.</p>
+	</section>
+	<div class="tabs" role="tablist" aria-label="Contenido de Medicina">
+		<button class="tab" type="button" id="proposalsTab" role="tab" aria-controls="proposalsPanel" aria-selected="true">Propuestas</button>
+		<button class="tab" type="button" id="membersTab" role="tab" aria-controls="membersPanel" aria-selected="false" tabindex="-1">Miembros</button>
+	</div>
+	<section class="tab-panel" id="proposalsPanel" role="tabpanel" aria-labelledby="proposalsTab">
+		<div class="section-head"><h2>Propuestas de Medicina</h2><span class="count" id="proposalCount">0 propuestas</span></div>
+		<div class="items" id="proposalList"></div>
+		<p class="empty" id="proposalEmpty" hidden>Aún no hay propuestas publicadas.</p>
+	</section>
+	<section class="tab-panel" id="membersPanel" role="tabpanel" aria-labelledby="membersTab" hidden>
+		<div class="section-head"><h2>Miembros de Medicina</h2><span class="count" id="memberCount">0 miembros</span></div>
+		<div class="members" id="memberList"></div>
+		<p class="empty" id="memberEmpty" hidden>Aún no hay miembros registrados.</p>
+	</section>
+</main>
+<footer><div class="wrap"><span>Facultad de Medicina</span><span>Propuesta académica. No es un sitio oficial de UNITEC.</span></div></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="firebase-client.js"></script>
+<script>window.PAGE_CONFIG={faculty:'Medicina',roleSlug:'medicina'};</script>
+<script src="public-page.js"></script>
+</body>
+</html>

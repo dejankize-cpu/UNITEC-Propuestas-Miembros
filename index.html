@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNITEC | Tu carrera empieza aquí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b2a57; --navy-deep:#121c3d; --red:#c8202f; --ink:#141b34;
+  --paper:#f3f4f8; --white:#fff; --line:#dfe2ec; --muted:#5b6382;
+  --display:"Outfit",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 1rem/1.6 var(--body);color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(100% - 2.5rem,68rem);margin-inline:auto}
+
+/* Barra superior */
+.top{position:sticky;top:0;z-index:10;background:var(--red);border-bottom:1px solid #a81827}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.top img{height:3rem;width:auto;display:block}
+.nav a{color:var(--ink)}
+.menu-btn{border:0;background:none;width:2.75rem;height:2.75rem;display:grid;place-content:center;gap:5px;cursor:pointer}
+.menu-btn span{display:block;width:1.5rem;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav{display:none;position:absolute;inset:100% 0 auto;background:var(--white);border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1.25rem}
+.nav.open{display:block}
+.nav a{display:block;padding:.85rem 0;font:600 1.05rem var(--display);border-bottom:1px solid var(--line)}
+.nav a:last-child{border:0}
+
+/* Portada con el corte diagonal de tu diseño */
+.hero{background:var(--navy);color:var(--white);padding:3rem 0 6.5rem;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.hero h1{font:700 clamp(2.4rem,9vw,4.4rem)/1.02 var(--display);letter-spacing:-.02em;max-width:12ch}
+.hero p{margin-top:1.1rem;max-width:34rem;color:#c9d0ea;font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:0 1.5rem;border-radius:.6rem;font:600 1rem var(--display);transition:background .2s}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:#a81926}
+.cta button{border:0;cursor:pointer}
+.btn.ghost{border:2px solid #ffffff66;color:#fff}.btn.ghost:hover{background:#ffffff1a}
+
+/* Accesos rápidos */
+.quick{margin-top:-3.5rem;position:relative}
+.quick ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.quick a{display:block;height:100%;background:var(--white);border-radius:.9rem;padding:1.1rem 1rem 1.2rem;border-top:4px solid var(--red);box-shadow:0 10px 24px -14px #1b2a5766}
+.quick b{display:block;font:600 1.1rem var(--display);color:var(--navy)}
+.quick span{font-size:.9rem;color:var(--muted)}
+
+/* Carreras */
+section.block{padding:3.5rem 0 1rem}
+h2{font:700 clamp(1.7rem,5vw,2.4rem)/1.1 var(--display);color:var(--navy);letter-spacing:-.01em}
+.lead{color:var(--muted);margin-top:.5rem;max-width:34rem}
+.careers{list-style:none;padding:0;margin-top:1.75rem;border-top:2px solid var(--navy)}
+.careers li a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem .25rem;border-bottom:1px solid var(--line)}
+.careers strong{display:block;font:600 1.15rem var(--display)}
+.careers small{color:var(--muted)}
+.careers i{flex:none;width:.7rem;height:.7rem;border-top:3px solid var(--red);border-right:3px solid var(--red);transform:rotate(45deg);transition:transform .2s}
+.careers a:hover i{transform:translateX(4px) rotate(45deg)}
+
+/* Pie */
+footer{margin-top:4rem;background:var(--navy-deep);color:#c9d0ea;padding:3rem 0 2.5rem;clip-path:polygon(0 8%,100% 0,100% 100%,0 100%)}
+footer .wrap{padding-top:1.5rem;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1rem}
+footer h3{font:600 1.3rem var(--display);color:#fff}
+footer small{color:#8f98bd}
+.footer-meta{display:grid;justify-items:end;align-self:end;max-width:100%;text-align:right}
+
+@media(min-width:48rem){
+  .menu-btn{display:none}
+  .nav{display:flex;position:static;border:0;padding:0;gap:2rem;background:none}
+  .nav a{border:0;padding:0;font-size:1rem;color:#fff}
+  .nav a:hover{color:#f3a0a6}
+  .hero{padding:5.5rem 0 9rem}
+  .quick{margin-top:-5rem}
+  .quick ul{grid-template-columns:repeat(4,1fr);gap:1rem}
+  .careers{display:grid;grid-template-columns:1fr 1fr;column-gap:3rem}
+}
+@media(max-width:30rem){footer .wrap{grid-template-columns:1fr}.footer-meta{justify-self:end}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" aria-label="UNITEC, inicio"><img src="logo-unitec-blanco-logo-horizontal-compuesto-unitec.png" alt="UNITEC Laureate International Universities"></a>
+    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="P-Acceso-Presi-Admim.html">Acceso para administradores</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Informate mas sobre las propuestas de tu carrera</h1>
+      <p>Conoce las propuestas de los estudiantes de tu facultad y a las personas que las representan.</p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="carreras">
+    <h2>¿Qué estudias?</h2>
+    <p class="lead">Elige tu carrera y conoce más.</p>
+    <ul class="careers">
+      <li><a href="P-Propuestas&amp;Miembros-Derecho.html"><span><strong>Derecho</strong><small>Propuestas y miembros</small></span><i></i></a></li>
+      <li><a href="P-Propuestas&amp;Miembros-Medicina.html"><span><strong>Medicina</strong><small>Propuestas y miembros</small></span><i></i></a></li>
+      <li><a href="P-Propuestas&amp;Miembros-IngCivil.html"><span><strong>Ingeniería Civil</strong><small>Propuestas y miembros</small></span><i></i></a></li>
+      <li><a href="P-Propuestas&amp;Miembros-Electromecanicas.html"><span><strong>Electromecánicas</strong><small>Propuestas y miembros</small></span><i></i></a></li>
+    </ul>
+  </section>
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div><h3>UNITEC</h3><p>Laureate International Universities</p></div>
+    <div class="footer-meta"><small>© 2026 UNITEC Estudiantes</small><small>Este sitio no es oficial de la UNITEC</small></div>
+  </div>
+</footer>
+
+<script>
+const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso para administradores y presidentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b2a57; --navy-deep:#121c3d; --red:#c8202f; --ink:#141b34;
+  --paper:#f3f4f8; --white:#fff; --line:#dfe2ec; --muted:#5b6382;
+  --display:"Outfit",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 1rem/1.6 var(--body);color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:min(100% - 2.5rem,68rem);margin-inline:auto}
+
+/* Barra superior */
+.top{position:sticky;top:0;z-index:10;background:var(--red);border-bottom:1px solid #a81827}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.top img{height:3rem;width:auto;display:block}
+.nav a{color:var(--ink)}
+.menu-btn{border:0;background:none;width:2.75rem;height:2.75rem;display:grid;place-content:center;gap:5px;cursor:pointer}
+.menu-btn span{display:block;width:1.5rem;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav{display:none;position:absolute;inset:100% 0 auto;background:var(--white);border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1.25rem}
+.nav.open{display:block}
+.nav a{display:block;padding:.85rem 0;font:600 1.05rem var(--display);border-bottom:1px solid var(--line)}
+.nav a:last-child{border:0}
+
+/* Portada con el corte diagonal de tu diseño */
+.hero{background:var(--navy);color:var(--white);padding:3rem 0 6.5rem;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.hero h1{font:700 clamp(2.4rem,9vw,4.4rem)/1.02 var(--display);letter-spacing:-.02em;max-width:12ch}
+.hero p{margin-top:1.1rem;max-width:34rem;color:#c9d0ea;font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:0 1.5rem;border-radius:.6rem;font:600 1rem var(--display);transition:background .2s}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:#a81926}
+.btn.ghost{border:2px solid #ffffff66;color:#fff}.btn.ghost:hover{background:#ffffff1a}
+
+/* Accesos rápidos */
+.quick{margin-top:-3.5rem;position:relative}
+.quick ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.quick a{display:block;height:100%;background:var(--white);border-radius:.9rem;padding:1.1rem 1rem 1.2rem;border-top:4px solid var(--red);box-shadow:0 10px 24px -14px #1b2a5766}
+.quick b{display:block;font:600 1.1rem var(--display);color:var(--navy)}
+.quick span{font-size:.9rem;color:var(--muted)}
+
+/* Carreras */
+section.block{padding:3.5rem 0 1rem}
+h2{font:700 clamp(1.7rem,5vw,2.4rem)/1.1 var(--display);color:var(--navy);letter-spacing:-.01em}
+.lead{color:var(--muted);margin-top:.5rem;max-width:34rem}
+.careers{list-style:none;padding:0;margin-top:1.75rem;border-top:2px solid var(--navy)}
+.careers li a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem .25rem;border-bottom:1px solid var(--line)}
+.careers strong{display:block;font:600 1.15rem var(--display)}
+.careers small{color:var(--muted)}
+.careers i{flex:none;width:.7rem;height:.7rem;border-top:3px solid var(--red);border-right:3px solid var(--red);transform:rotate(45deg);transition:transform .2s}
+.careers a:hover i{transform:translateX(4px) rotate(45deg)}
+
+/* Pie */
+footer{margin-top:4rem;background:var(--navy-deep);color:#c9d0ea;padding:3rem 0 2.5rem;clip-path:polygon(0 8%,100% 0,100% 100%,0 100%)}
+footer .wrap{padding-top:1.5rem;display:grid;gap:1.5rem}
+footer h3{font:600 1.3rem var(--display);color:#fff}
+footer small{color:#8f98bd}
+
+@media(min-width:48rem){
+  .menu-btn{display:none}
+  .nav{display:flex;position:static;border:0;padding:0;gap:2rem;background:none}
+  .nav a{border:0;padding:0;font-size:1rem;color:#fff}
+  .nav a:hover{color:#f3a0a6}
+  .hero{padding:5.5rem 0 9rem}
+  .quick{margin-top:-5rem}
+  .quick ul{grid-template-columns:repeat(4,1fr);gap:1rem}
+  .careers{display:grid;grid-template-columns:1fr 1fr;column-gap:3rem}
+  footer .wrap{grid-template-columns:1.5fr 1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Formulario */
+form{margin-top:1.5rem;display:grid;gap:1.1rem;max-width:34rem}
+.access-form{max-width:34rem}
+.access-form select{font:400 1rem var(--body);min-height:3rem;padding:0 .9rem;border:1.5px solid var(--line);border-radius:.6rem;background:var(--white);color:var(--ink)}
+.access-result{margin-top:1.5rem;padding:1rem 1.1rem;border-left:4px solid #18794e;background:var(--white)}
+.access-result[hidden]{display:none}
+.access-result strong{display:block;color:#18794e;font:600 1.05rem var(--display)}
+.field{display:grid;gap:.4rem;font:600 .95rem var(--display);color:var(--navy)}
+input:not([type=checkbox]){font:400 1rem var(--body);min-height:3rem;padding:0 .9rem;border:1.5px solid var(--line);border-radius:.6rem;background:var(--white);color:var(--ink)}
+input:not([type=checkbox]):focus{border-color:var(--navy)}
+fieldset{border:0;padding:0;display:grid;gap:.5rem}
+legend{font:600 .95rem var(--display);color:var(--navy);margin-bottom:.5rem}
+.check{display:flex;align-items:center;gap:.8rem;min-height:3.1rem;padding:0 1rem;background:var(--white);border:1.5px solid var(--line);border-radius:.6rem;cursor:pointer;font-weight:500}
+.check:has(input:checked){border-color:var(--navy);background:#e9ecf6}
+.check input{width:1.3rem;height:1.3rem;accent-color:var(--red)}
+.msg{min-height:1.4rem;font-size:.92rem;color:var(--red)}
+.msg.ok{color:#18794e}
+form .btn{border:0;cursor:pointer}
+.count{display:inline-grid;place-content:center;min-width:2rem;height:2rem;margin-left:.4rem;padding:0 .5rem;border-radius:1rem;background:var(--red);color:#fff;font:600 1rem var(--display);vertical-align:middle}
+.members{list-style:none;padding:0;margin-top:1.25rem;border-top:2px solid var(--navy)}
+.members li{padding:.9rem .25rem;border-bottom:1px solid var(--line)}
+.members strong{display:block;font:600 1.1rem var(--display)}
+.members small{color:var(--muted)}
+.empty{margin-top:1rem;color:var(--muted)}
+@media(min-width:48rem){fieldset{grid-template-columns:1fr 1fr}legend{grid-column:1/-1}.members{display:grid;grid-template-columns:1fr 1fr;column-gap:3rem}}
+
+.avatar{width:3.2rem;height:3.2rem;border-radius:50%;object-fit:cover;background:var(--line);flex:none}
+.avatar.big{width:6rem;height:6rem;margin-top:.5rem}
+.members li{display:flex;align-items:center;gap:.9rem}
+.members .info{flex:1;min-width:0}
+.del{border:1.5px solid var(--red);background:none;color:var(--red);border-radius:.5rem;min-height:2.5rem;padding:0 .9rem;font:600 .9rem var(--display);cursor:pointer}
+.del:hover{background:var(--red);color:#fff}
+.admin-bar{margin-top:1rem;padding:.7rem 1rem;background:#fff3cd;border-radius:.5rem;font-size:.92rem}
+.admin-bar button,.admin-link{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit}
+.admin-link{color:#8f98bd;justify-self:start;min-height:2.5rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" aria-label="UNITEC, inicio"><img src="logo-unitec-blanco-logo-horizontal-compuesto-unitec.png" alt="Logo UNITEC"></a>
+    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Inicio</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Acceso administrativo</h1>
+      <p>Inicia sesión según tu cargo y facultad.</p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="registro">
+    <h2>Elige tu cargo</h2>
+    <p class="lead">Cada cuenta tiene acceso limitado a su cargo y facultad.</p>
+    <form class="access-form" id="accessForm">
+      <label class="field" for="role">Cargo
+        <select id="role" name="role" required>
+          <option value="" selected disabled>Elige tu cargo</option>
+          <option value="admin">Administrador</option>
+          <option value="presidente-civil">Presidente | Ingeniería Civil</option>
+          <option value="presidente-derecho">Presidente | Derecho</option>
+          <option value="presidente-medicina">Presidente | Medicina</option>
+          <option value="presidente-mecatronica">Presidente | Electromecánicas</option>
+          <option value="vicepresidente-civil">Vicepresidente | Ingeniería Civil</option>
+          <option value="vicepresidente-derecho">Vicepresidente | Derecho</option>
+          <option value="vicepresidente-medicina">Vicepresidente | Medicina</option>
+          <option value="vicepresidente-mecatronica">Vicepresidente | Electromecánicas</option>
+        </select>
+      </label>
+      <label class="field" for="email">Correo
+        <input id="email" name="email" type="email" required autocomplete="username">
+      </label>
+      <label class="field" for="password">Contraseña
+        <input id="password" name="password" type="password" required autocomplete="current-password">
+      </label>
+      <p class="msg" id="loginMessage" role="alert" aria-live="polite"></p>
+      <button class="btn red" type="submit">Iniciar sesión</button>
+    </form>
+    <section class="access-result" id="accessResult" aria-live="polite" hidden>
+      <strong>Acceso verificado</strong>
+      <p id="accessSummary"></p>
+      <p>El panel de gestión se habilitará cuando esté conectado a esta sesión.</p>
+    </section>
+  </section>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="firebase-client.js"></script>
+<script>
+(() => {
+  const FB = window.UNITECFirebase;
+  const PAGES = { admin: 'P-tools-Admin.html', 'Ingeniería Civil': 'P-tools-F-IngCivil.html', Derecho: 'P-tools-F-Derecho.html', Medicina: 'P-tools-F-Medicina.html', Electromecánicas: 'P-tools-F-Electromecanicas.html' };
+  const menuButton = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
+  menuButton.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuButton.setAttribute('aria-expanded', open); });
+  nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', false); } });
+  const form = document.getElementById('accessForm'), message = document.getElementById('loginMessage');
+  const reason = error => {
+    const code = error?.code || '';
+    if (/auth\/(invalid-credential|wrong-password|user-not-found|invalid-email)/.test(code)) return 'Correo o contraseña incorrectos.';
+    if (code === 'auth/too-many-requests') return 'Demasiados intentos. Espera unos minutos e inténtalo de nuevo.';
+    if (code === 'auth/network-request-failed') return 'Sin conexión con Firebase. Revisa tu internet.';
+    if (code === 'auth/unauthorized-domain') return 'Este dominio no está autorizado en Firebase Authentication.';
+    return error?.message || 'No se pudo iniciar sesión.';
+  };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('button[type=submit]'); button.disabled = true; message.textContent = 'Verificando…';
+    try {
+      const role = await FB.signIn(form.elements.email.value.trim(), form.elements.password.value, form.elements.role.value);
+      location.href = PAGES[role.role === 'admin' ? 'admin' : role.faculty] || 'index.html';
+    } catch (error) { message.textContent = reason(error); button.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

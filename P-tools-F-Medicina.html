@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facultad de Medicina | Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+	--green:#176b4b; --green-dark:#104a37; --green-soft:#eaf4ed;
+	--ink:#17352b; --paper:#f4f8f5; --white:#fff; --line:#dce8df;
+	--muted:#5a7164; --red:#b52b3a;
+	--display:"Outfit",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--body)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid #d9a92d;outline-offset:3px}
+.wrap{width:min(100% - 2rem,68rem);margin-inline:auto}
+.top{background:var(--green-dark);color:var(--white);border-bottom:4px solid #a7cdb3}
+.top .wrap{min-height:5rem;display:flex;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:.9rem;min-width:0}
+.brand img{width:3.5rem;height:3.5rem;object-fit:cover;border-radius:.3rem;background:#06439b}
+.brand span{font:600 1rem/1.2 var(--display)}
+.home{margin-left:auto;color:#e0eee4;font-weight:600}
+.main{padding:clamp(2.5rem,7vh,5rem) 0 4rem}
+.heading{padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--green);font:600 .8rem var(--display);text-transform:uppercase;letter-spacing:.08em}
+h1{margin-top:.35rem;color:var(--green-dark);font:700 clamp(2rem,5vw,3rem)/1.05 var(--display)}
+.heading p{margin-top:.75rem;color:var(--muted);max-width:42rem}
+.role{margin-top:.6rem;color:var(--green);font-size:.92rem;font-weight:600}
+.tools{display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:1.5rem}
+.tool{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4.5rem;padding:1rem 1.15rem;border:1px solid var(--line);border-left:5px solid var(--green);background:var(--white);color:var(--green-dark);text-align:left;font:600 1.05rem var(--display);cursor:pointer;transition:background .16s,border-color .16s,transform .16s}
+.tool:hover,.tool[aria-pressed=true]{background:var(--green-soft);border-color:#a7cdb3;transform:translateY(-1px)}
+.tool span:last-child{font-size:1.35rem;color:var(--green)}
+.panel{margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--green)}
+.panel[hidden]{display:none}
+.panel h2{font:600 1.55rem/1.2 var(--display);color:var(--green-dark)}
+.panel p{margin-top:.35rem;color:var(--muted)}
+.form{display:grid;gap:1rem;max-width:38rem;margin-top:1.25rem}
+.field{display:grid;gap:.35rem;color:var(--green-dark);font:600 .95rem var(--display)}
+.field[hidden]{display:none}
+.field input,.field textarea{width:100%;min-height:3rem;padding:.7rem .85rem;border:1px solid var(--line);border-radius:.35rem;background:var(--white);color:var(--ink);font:400 1rem var(--body)}
+.field input[type=file]{padding:.5rem}
+.field select{width:100%;min-height:3rem;padding:.7rem .85rem;border:1px solid var(--line);border-radius:.35rem;background:var(--white);color:var(--ink);font:400 1rem var(--body)}
+.field textarea{min-height:7rem;resize:vertical}
+.proposal-toolbar{display:flex;align-items:center;gap:.75rem}
+.proposal-editor{min-height:15rem;padding:.9rem;border:1px solid var(--line);border-radius:.35rem;background:var(--white);overflow-wrap:anywhere}
+.proposal-editor:focus{outline:2px solid var(--green);outline-offset:1px}
+.proposal-editor:empty::before{content:attr(data-placeholder);color:var(--muted)}
+.proposal-editor img{display:block;max-width:100%;max-height:70vh;width:auto;height:auto;object-fit:contain;margin:1rem 0}
+.image-input{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.photo-preview{width:5rem;height:5rem;object-fit:cover;border:1px solid var(--line);border-radius:50%}
+.photo-preview[hidden]{display:none}
+.confirm-form{width:100%;margin-top:.75rem}
+.submit{justify-self:start;min-height:2.8rem;padding:0 1.1rem;border:0;border-radius:.35rem;background:var(--green);color:var(--white);font:600 .95rem var(--display);cursor:pointer}
+.submit:hover{background:var(--green-dark)}
+.status{min-height:1.5rem;color:var(--red);font-size:.92rem}
+.items{list-style:none;padding:0;margin-top:1rem;border-top:1px solid var(--line)}
+.items li{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.item-copy{min-width:0;flex:1}
+.item-copy strong{display:block;color:var(--green-dark);font:600 1rem var(--display);overflow-wrap:anywhere}
+.item-copy small{display:block;color:var(--muted);overflow-wrap:anywhere}
+.remove{min-height:2.4rem;padding:0 .8rem;border:1px solid var(--red);border-radius:.35rem;background:var(--white);color:var(--red);font:600 .9rem var(--display);cursor:pointer}
+.remove:hover{background:#fff0f1}
+.empty{padding:1rem 0;color:var(--muted)}
+@media(min-width:42rem){.tools{grid-template-columns:1fr 1fr;gap:1rem}.tool{min-height:5.5rem;padding:1.2rem 1.35rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+	<div class="wrap">
+		<a class="brand" href="index.html" aria-label="UNITEC, inicio">
+			<img src="Imagen%20del%20logo%20de%20la%20facultad%20de%20medicina.jpeg" alt="Emblema de la Facultad de Medicina">
+			<span>Facultad de Medicina</span>
+		</a>
+		<a class="home" href="index.html">Salir</a>
+	</div>
+</header>
+<main class="main wrap">
+	<section class="heading" aria-labelledby="pageTitle">
+		<p class="eyebrow">Panel de gestión</p>
+		<h1 id="pageTitle">Facultad de Medicina</h1>
+		<p>Administra los miembros y las propuestas de tu facultad.</p>
+		<p class="role" id="roleLabel"></p>
+	</section>
+	<nav class="tools" aria-label="Herramientas de Medicina">
+		<button class="tool" type="button" data-action="register" aria-pressed="false"><span>Registro</span><span aria-hidden="true">+</span></button>
+		<button class="tool" type="button" data-action="delete-member" aria-pressed="false"><span>Eliminar miembro</span><span aria-hidden="true">−</span></button>
+		<button class="tool" type="button" data-action="create-proposal" aria-pressed="false"><span>Crear propuestas</span><span aria-hidden="true">+</span></button>
+		<button class="tool" type="button" data-action="edit-proposals" aria-pressed="false"><span>Editar propuestas</span><span aria-hidden="true">✎</span></button>
+		<button class="tool" type="button" data-action="delete-proposal" aria-pressed="false"><span>Eliminar propuestas</span><span aria-hidden="true">−</span></button>
+		<button class="tool" type="button" data-action="remove-title" aria-pressed="false"><span>Eliminar cargo normal</span><span aria-hidden="true">−</span></button>
+	</nav>
+	<section class="panel" id="panel" aria-live="polite" hidden></section>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="firebase-client.js"></script>
+<script src="tools-common.js"></script>
+<script>window.TOOLS_CONFIG={faculty:'Medicina',roleSlug:'medicina'};</script>
+<script src="faculty-tools.js"></script>
+</body>
+</html>
