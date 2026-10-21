@@ -22,7 +22,9 @@ a{color:inherit;text-decoration:none}
 .top{background:var(--green-dark);color:var(--white);border-bottom:4px solid #c8ad96}
 .top .wrap{min-height:5.5rem;display:flex;align-items:center;gap:1rem}
 .brand{display:flex;align-items:center;gap:.85rem;font:600 1rem var(--display)}
-.brand img{width:4.5rem;height:4.5rem;object-fit:contain;border-radius:.25rem;background:#06439b}
+.brand img{width:4rem;height:4rem;object-fit:contain;border-radius:.25rem;background:#ffffff}
+.brand-text{display:flex;flex-direction:column;line-height:1.25}
+.brand-text small{font:400 .85rem var(--body);color:#e8ddd4}
 .home{margin-left:auto;color:#e8ddd4;font-weight:600}
 .main{padding:clamp(2.5rem,7vh,5rem) 0 4rem}
 .heading{padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
@@ -65,14 +67,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 	<div class="wrap">
 		<a class="brand" href="index.html" aria-label="UNITEC, inicio">
 			<img src="LogoPACTASUNT.png" alt="Logo PACTA SUNT de la Facultad de Derecho">
-			<span>Facultad de Derecho</span>
+			<span>Pacta Sunt Servanda<small>Facultad de Derecho</small></span>
 		</a>
 		<a class="home" href="index.html">Inicio</a>
 	</div>
 </header>
 <main class="main wrap">
 	<section class="heading" aria-labelledby="pageTitle">
-		<p class="eyebrow">Comunidad académica</p>
 		<h1 id="pageTitle">Propuestas y miembros</h1>
 		<p>Conoce las propuestas y a las personas de la Facultad de Derecho.</p>
 	</section>
@@ -81,12 +82,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 		<button class="tab" type="button" id="membersTab" role="tab" aria-controls="membersPanel" aria-selected="false" tabindex="-1">Miembros</button>
 	</div>
 	<section class="tab-panel" id="proposalsPanel" role="tabpanel" aria-labelledby="proposalsTab">
-		<div class="section-head"><h2>Propuestas de Derecho</h2><span class="count" id="proposalCount">0 propuestas</span></div>
+		<div class="section-head"><h2>Propuestas de Pacta Sunt Servanda</h2><span class="count" id="proposalCount">0 propuestas</span></div>
 		<div class="items" id="proposalList"></div>
 		<p class="empty" id="proposalEmpty" hidden>Aún no hay propuestas publicadas.</p>
 	</section>
 	<section class="tab-panel" id="membersPanel" role="tabpanel" aria-labelledby="membersTab" hidden>
-		<div class="section-head"><h2>Miembros de Derecho</h2><span class="count" id="memberCount">0 miembros</span></div>
+		<div class="section-head"><h2>Miembros de Pacta Sunt Servanda</h2><span class="count" id="memberCount">0 miembros</span></div>
 		<div class="members" id="memberList"></div>
 		<p class="empty" id="memberEmpty" hidden>Aún no hay miembros registrados.</p>
 	</section>
