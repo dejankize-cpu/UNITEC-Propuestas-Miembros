@@ -72,25 +72,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 </header>
 <main class="main wrap">
 	<section class="heading" aria-labelledby="pageTitle">
+		<p class="eyebrow">Comunidad académica</p>
 		<h1 id="pageTitle">Propuestas y miembros</h1>
-		<p>Conoce nuestras propuestas y al equipo que está detrás de ellas.</p>
+		<p>Conoce las propuestas y a las personas de la Facultad de Electromecánicas.</p>
 	</section>
 	<div class="tabs" role="tablist" aria-label="Contenido de Electromecánicas">
 		<button class="tab" type="button" id="proposalsTab" role="tab" aria-controls="proposalsPanel" aria-selected="true">Propuestas</button>
 		<button class="tab" type="button" id="membersTab" role="tab" aria-controls="membersPanel" aria-selected="false" tabindex="-1">Miembros</button>
 	</div>
 	<section class="tab-panel" id="proposalsPanel" role="tabpanel" aria-labelledby="proposalsTab">
-		<div class="section-head"><h2>Propuestas de Electromecánicas</h2><span class="count" id="proposalCount">0 propuestas</span></div>
+		<div class="section-head"><h3>Propuestas de Electromecánicas</h3><span class="count" id="proposalCount">0 propuestas</span></div>
 		<div class="items" id="proposalList"></div>
 		<p class="empty" id="proposalEmpty" hidden>Aún no hay propuestas publicadas.</p>
 	</section>
 	<section class="tab-panel" id="membersPanel" role="tabpanel" aria-labelledby="membersTab" hidden>
-		<div class="section-head"><h2>Miembros de Electromecánicas</h2><span class="count" id="memberCount">0 miembros</span></div>
+		<div class="section-head"><h3>Miembros de Electromecánicas</h3><span class="count" id="memberCount">0 miembros</span></div>
 		<div class="members" id="memberList"></div>
 		<p class="empty" id="memberEmpty" hidden>Aún no hay miembros registrados.</p>
 	</section>
 </main>
-<footer><div class="wrap"><span>Asociación de Electromecánicas</span><span>Propuesta académica. No es un sitio oficial de UNITEC.</span></div></footer>
+<footer><div class="wrap"><span>Facultad de Electromecánicas</span><span>Propuesta académica. No es un sitio oficial de UNITEC.</span></div></footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>

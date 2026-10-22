@@ -67,7 +67,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 	<div class="wrap">
 		<a class="brand" href="index.html" aria-label="UNITEC, inicio">
 			<img src="LogoPACTASUNT.png" alt="Logo PACTA SUNT de la Facultad de Derecho">
-			<span>Pacta Sunt Servanda<small>Facultad de Derecho</small></span>
+			<div class="brand-text">
+				<span>Pacta Sunt Servanda</span>
+				<small>Facultad de Derecho</small>
+			</div>
 		</a>
 		<a class="home" href="index.html">Inicio</a>
 	</div>
@@ -75,19 +78,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 <main class="main wrap">
 	<section class="heading" aria-labelledby="pageTitle">
 		<h1 id="pageTitle">Propuestas y miembros</h1>
-		<p>Conoce las propuestas y a las personas de la Facultad de Derecho.</p>
+		<p>Conoce nuestras propuestas y al equipo que está detrás de ellas.</p>
 	</section>
 	<div class="tabs" role="tablist" aria-label="Contenido de Derecho">
 		<button class="tab" type="button" id="proposalsTab" role="tab" aria-controls="proposalsPanel" aria-selected="true">Propuestas</button>
 		<button class="tab" type="button" id="membersTab" role="tab" aria-controls="membersPanel" aria-selected="false" tabindex="-1">Miembros</button>
 	</div>
 	<section class="tab-panel" id="proposalsPanel" role="tabpanel" aria-labelledby="proposalsTab">
-		<div class="section-head"><h2>Propuestas de Pacta Sunt Servanda</h2><span class="count" id="proposalCount">0 propuestas</span></div>
+		<div class="section-head"><h3>Propuestas de Pacta Sunt Servanda</h3><span class="count" id="proposalCount">0 propuestas</span></div>
 		<div class="items" id="proposalList"></div>
 		<p class="empty" id="proposalEmpty" hidden>Aún no hay propuestas publicadas.</p>
 	</section>
 	<section class="tab-panel" id="membersPanel" role="tabpanel" aria-labelledby="membersTab" hidden>
-		<div class="section-head"><h2>Miembros de Pacta Sunt Servanda</h2><span class="count" id="memberCount">0 miembros</span></div>
+		<div class="section-head"><h3>Miembros de Pacta Sunt Servanda</h3><span class="count" id="memberCount">0 miembros</span></div>
 		<div class="members" id="memberList"></div>
 		<p class="empty" id="memberEmpty" hidden>Aún no hay miembros registrados.</p>
 	</section>
